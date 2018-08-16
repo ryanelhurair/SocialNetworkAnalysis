@@ -13,8 +13,10 @@ print (nx.info(G_fb))
 #Create network layout for visualizations
 spring_pos = nx.spring_layout(G_fb)
 plt.axis("off")
-nx.draw_networkx(G_fb, pos = spring_pos, with_labels = False, node_size = 35)
-#plt.savefig("results/fbnetwork.png", format = "PNG")
+nx.draw_networkx(G_fb, pos = spring_pos, with_labels = "true", node_size = 25)
+
+
+#plt.savefig("results/fbnetwork.csv", format = "csv")
 plt.show()
 
 def partitions(nodes, n):
@@ -57,13 +59,12 @@ if __name__ == '__main__':
         bt_colors[max_key] = 2
 
     plt.axis("off")
-    nx.draw_networkx(G_fb, pos = spring_pos, cmap = plt.get_cmap("rainbow"), node_color = bt_colors, node_size = bt_values, with_labels = False)
+    nx.draw_networkx(G_fb, pos = spring_pos, cmap = plt.get_cmap("rainbow"), node_color = bt_colors, node_size = bt_values, with_labels = "true")
     plt.show()
 
     parts = community.best_partition(G_fb)
     values = [parts.get(node) for node in G_fb.nodes()]
 
     plt.axis("off")
-    nx.draw_networkx(G_fb, pos = spring_pos, cmap = plt.get_cmap("jet"), node_color = values, node_size = 35, with_labels = False)
+    nx.draw_networkx(G_fb, pos = spring_pos, cmap = plt.get_cmap("jet"), node_color = values, node_size = 25, with_labels = "true")
     plt.show()
-	
